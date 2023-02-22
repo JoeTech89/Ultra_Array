@@ -1,16 +1,50 @@
-
+def check_key(key:str,against:list):
+	count=0
+	for k in against:
+		if k==key or k==key+str(count):
+			count+=1
+	if count>0:
+		key=key+str(count)
+	return key
+#================================================
 class ultra_dict(dict):
-	_inner={}
 	_name='Dictionary'
 
 	def __init__(self,**kwargs):
 		for k in kwargs:
 			self[k]=kwargs[k]
 
-
-	def append(self,**kwargs):
+	def __call__(self,**kwargs):
 		for k in kwargs:
 			self[k]=kwargs[k]
+
+	def __str__(self):
+		ret=''
+		end='\n'
+		if len(self)>0:
+			for k in self:
+				ret=ret+f"{'[ '+str(k)+' ]':<10}"+f"{self[k]:>5}"+'\n'
+		else:ret='{EMPTY}';end=''
+		print(self._name,':',end=end)
+		return ret
+	
+	def append(self,**kwargs):
+		for k in kwargs:
+			nk=check_key(k,self)
+			self[nk]=kwargs[k]
+
+	def set(self,what,value):
+		what=what.lower()
+		if what=='name' or what=='n':
+			self._name=value
+			return self
+		else:print('Accepted values:','name or n')
+#================================================
+class ultra_dict_plus(ultra_dict):
+	_inner={}
+
+	def __init__(self,**kwargs):
+		super().__init__(**kwargs)
 
 	def appendKeyValue(self,key,value):
 		self[key]=value
@@ -30,16 +64,15 @@ class ultra_dict(dict):
 			return self._inner.get(key)
 		else: raise Exception(f"{'['+key+']':<20}"f"{' was not found in dictionary':->80}")
 
-	def __str__(self):
-		ret=''
-		end='\n'
-		if len(self)>0:
-			for k in self:
-				ret=ret+f"{'['+str(k)+']':-<15}"+f"{'':^5}"+f"{self[k]:<20}"+'\n'
-		else:ret='{EMPTY}';end=''
-		print(self._name,':',end=end)
-		return ret
 
 if __name__=='__main__':
-	m=ultra_dict(look='value',I='can',just='add',things='!!!!')
-	print(m)
+	obj=ultra_dict(keyA=1,keyB=2,keyC=3).set('NAME','Test Dictionary')
+	print('Initialized with...')
+	print(obj)
+	print('Calling Adjustments')
+	obj(keyA=4,keyB=5,keyC=6)
+	print(obj)
+	print('After appending the same keys')
+	obj.append(keyA=1,keyB=2,keyC=3)
+	print(obj)
+	print(f"{'':-<20}")
