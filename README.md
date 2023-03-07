@@ -8,7 +8,7 @@
 <body>
 
 <h4>Custom Python Variable Types with expanded functionality.</h4>
-<h6>Please use only the UltraArray version.</h6>
+<h6>Please use only the UltraArray version. Depreciated versions may already have been removed.</h6>
 <h6>NOTE: Tuple object implementation is not working as intended.</h6>
 <hr>
 <p>This Pakage module contains various objects, that are to be used as expanded variable types.<br>
