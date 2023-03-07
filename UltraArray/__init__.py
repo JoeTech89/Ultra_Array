@@ -1,5 +1,7 @@
-from ultra_dictionary import UDictionary,UDictionaryPlus
-from ultra_dictionary import UArray
-from ultra_tupple import UTupple
+from .ultra_dictionary import Dictionary,DictionaryPlus
+from .ultra_array import Array
+from .ultra_tupple import Tupple
+from .singleton import Singleton
 
-print('Imported RukusFramework Type Module')
+print('Imported RukusFramework Type Package')
+print('Version 0.2')

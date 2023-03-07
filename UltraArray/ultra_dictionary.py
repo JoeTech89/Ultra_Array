@@ -1,6 +1,9 @@
-from _public import check_key
+if __name__=='__main__':
+	from _public import check_key
+elif __name__!='__main__':
+	from ._public import check_key
 
-class UDictionary(dict):
+class Dictionary(dict):
 	_name = 'Dictionary'
 
 	def __init__(self, **kwargs):
@@ -12,7 +15,7 @@ class UDictionary(dict):
 		for k in kwargs:
 			self[k] = kwargs[k]
 
-	def __str__(self):
+	def __repr__(self):
 		ret = ''
 		end = '\n'
 		if len(self) > 0:
@@ -39,7 +42,7 @@ class UDictionary(dict):
 # ================================================
 
 
-class UDictionaryPlus(UDictionary):
+class DictionaryPlus(Dictionary):
 	_inner = {}
 
 	def __init__(self, **kwargs):
@@ -66,15 +69,13 @@ class UDictionaryPlus(UDictionary):
 
 
 if __name__ == '__main__':
-	D=Udict(keyA=1, keyB=2, keyC=3).set('NAME', 'Test Dictionary')
-	print()
-	# obj = UDictionary(keyA=1, keyB=2, keyC=3).set('NAME', 'Test Dictionary')
-	# print('Initialized with...')
-	# print(obj)
-	# print('Calling Adjustments')
-	# obj(keyA=4, keyB=5, keyC=6)
-	# print(obj)
-	# print('After appending the same keys')
-	# obj.append(keyA=1, keyB=2, keyC=3)
-	# print(obj)
-	# print(f"{'':-<20}")
+	obj = Dictionary(keyA=1, keyB=2, keyC=3).set('NAME', 'Test Dictionary')
+	print('Initialized with...')
+	print(obj)
+	print('Calling Adjustments')
+	obj(keyA=4, keyB=5, keyC=6)
+	print(obj)
+	print('After appending the same keys')
+	obj.append(keyA=1, keyB=2, keyC=3)
+	print(obj)
+	print(f"{'':-<20}")

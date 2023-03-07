@@ -1,11 +1,11 @@
 
-class UArray(list):
+class Array(list):
 	_name='List'
 	def __init__(self,*args):
 		for a in args:
 			self.append(a)
 
-	def __str__(self):
+	def __repr__(self):
 		ret=''
 		end='\n'
 		if len(self)>0:
@@ -28,5 +28,5 @@ class UArray(list):
 
 if __name__=='__main__':
 	print(f"{'Testing Array Module':-^100}")
-	a=UArray(1,2,3,4).set('name','Custom List')
+	a=Array(1,2,3,4).set('name','Custom List')
 	print(a)
