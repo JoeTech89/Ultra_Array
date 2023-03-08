@@ -55,8 +55,8 @@ A pro to useing this package is the expanded funtionality types will have, as we
 <h4>Basic implementation</h4>
 <p>
   <blockquote>a=Ultra.Array(1,2,3,4)</blockquote>
-  This will create an array as a with the values appended.<br>
-  You can also create it with the ~.set('name','Array Name') and will act as other types in gthis package do.
+  This will create an array with the values appended.<br>
+  You can also create it with the ~.set('name','Array Name') and will act as other types in this package do.
 </p>
 
 <h2>Tupple</h2>
